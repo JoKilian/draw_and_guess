@@ -18,32 +18,36 @@ christmas_words = [
     "Eislaufen", "Eiszapfen", "Schneeflocke", "Brief", "Sternsinger", "Schneeballschlacht", "Winterjacke", "Pullover", "Stiefel", "Zuckerstange"
 ]
 
-
 # Initialize session state for used words
 if "used_words" not in st.session_state:
     st.session_state.used_words = {"normal": set(), "christmas": set()}
 
-# Streamlit app title
-st.markdown("<h1 style='text-align: center;'>Montagsmaler</h1>", unsafe_allow_html=True)
-
-# Add a description
-st.write("Wählen Sie eine Kategorie und drücken Sie den Knopf unten, um ein Wort zum Zeichnen zu generieren!")
-
-# Select category
-category = st.selectbox("Wählen Sie eine Kategorie:", ("Normal", "Weihnachten"))
-
-# Center layout with larger button and word display
+# Apply dark theme using custom CSS
 st.markdown("""
 <style>
+    body {
+        background-color: #121212;
+        color: white;
+    }
+    .stApp {
+        background-color: #121212;
+    }
+    h1 {
+        color: white;
+    }
     .stButton > button {
         display: block;
         margin: 0 auto;
         font-size: 48px;
         padding: 15px 30px;
         color: white;
+        background-color: #333;
         border: none;
         border-radius: 10px;
         cursor: pointer;
+    }
+    .stButton > button:hover {
+        background-color: #444;
     }
     .stText {
         text-align: center;
@@ -54,6 +58,15 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+# Streamlit app title
+st.markdown("<h1 style='text-align: center;'>Montagsmaler</h1>", unsafe_allow_html=True)
+
+# Add a description
+st.write("Wählen Sie eine Kategorie und drücken Sie den Knopf unten, um ein Wort zum Zeichnen zu generieren!")
+
+# Select category
+category = st.selectbox("Wählen Sie eine Kategorie:", ("Normal", "Weihnachten"))
 
 # Button to generate a random word
 if st.button("Wort generieren"):
